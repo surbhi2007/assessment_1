@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="site.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="file" id="image-input" accept="image/jpeg, image/png, image/jpg">
+    <div class="imageDetails">
+        <div id="imageName"></div>
+        <div id="imageDimensions"></div>
+        <div id="mimeType"></div>
+    </div>
+    <table id="coordinatesTable">
+        <thead>
+            <tr>
+                <th>X Pos</th>
+                <th>Y Pos</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+    <div id="display-image"></div>
+    <form id="dialogBox" name="dialogBox">
+        <label for="description">Description</label>
+        <input name="description" id="description" type="text" />
+        <div id="buttons">
+            <button id="save">&#10003; Save</button>
+            <button id="close"> &#10007; Close</button>
+        </div>
+    </form>
+
+    <script src="image-mapper.js"></script>
+</body>
+
+</html>

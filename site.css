@@ -1,0 +1,71 @@
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+}
+
+#coordinatesTable {
+    display: none;
+}
+
+#display-image {
+  background-size: auto;
+  background-repeat: no-repeat;
+}
+
+img {
+    height: 95%;
+    width: 70%;
+    object-fit: contain;
+    z-index: -1;
+  }
+
+.imageDetails {
+  background-color: #d3d3d3;
+  width: fit-content;
+  height: auto;
+}
+
+.redMark {
+  border: 3px solid #ff0000;
+  background-color: #ff0000;
+  position: fixed;
+  border-radius: 50%;
+}
+
+#dialogBox {
+  background-color: #d3d3d3;
+  padding: 5px;
+  box-shadow: 1px 2px 2px 1px #d3d3d3;
+  position: absolute;
+  display: none;
+  z-index: 100;
+}
+
+#save,
+#close {
+  color: #fff;
+}
+
+#save {
+  background-color: #008000;
+}
+
+#close {
+  background-color: #ff0000;
+}
+
+.redMark:hover .tooltip {
+    display:block;
+  }
+  
+  .tooltip {
+    display: none;
+     text-align: center;
+     max-width: 100px;
+      padding: 15px;
+      background: rgba(240, 243, 240, 0.5);
+      word-wrap: break-word;
+      position: absolute;
+      z-index: 1000;
+  }

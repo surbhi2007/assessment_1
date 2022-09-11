@@ -7,7 +7,8 @@ const imageDimensions = document.querySelector("#imageDimensions");
 const dialogBox = document.querySelector("#dialogBox");
 const saveButton = document.querySelector("#save");
 const closeButton = document.querySelector("#close");
-const infoTable = document.querySelector("#info");
+const coordinatesTable = document.querySelector("#coordinatesTable");
+const coordinatesTableBody = document.querySelector("#coordinatesTable tbody");
 const description_input = document.querySelector("#description");
 
 body.addEventListener("click", function (event) {
@@ -30,15 +31,16 @@ image_input.addEventListener("change", function () {
 });
 
 let redMarker = "";
+let xPosition;
+let yPosition;
 image_area.addEventListener("click", function (imageAreaEvent) {
-  console.log(imageAreaEvent.target, "....imageAreaEvent..");
   if (
     imageAreaEvent.target.tagName === "IMG" &&
     (dialogBox.style.display === "none" || !dialogBox.style.display)
   ) {
     redMarker = document.createElement("div");
-    const xPosition = imageAreaEvent.clientX - redMarker.clientWidth;
-    const yPosition = imageAreaEvent.clientY - redMarker.clientHeight;
+    xPosition = imageAreaEvent.clientX - redMarker.clientWidth;
+    yPosition = imageAreaEvent.clientY - redMarker.clientHeight;
     redMarker.className = "redMark";
     redMarker.style.left = `${xPosition}px`;
     redMarker.style.top = `${yPosition}px`;
@@ -56,12 +58,16 @@ closeButton.addEventListener("click", (closeEvent) => {
   dialogBox.style.display = "none";
 });
 
-// fix the parent width
-
 saveButton.addEventListener("click", (saveEvent) => {
   saveEvent.stopImmediatePropagation();
   saveEvent.preventDefault();
   if (description_input.value) {
+    coordinatesTable.style.display = "block";
+    const newRow = document.createElement("tr");
+    newRow.innerHTML = `<td>${xPosition}</td>
+                        <td>${yPosition}</td>
+                        <td>${description_input.value}</td>`;
+    coordinatesTableBody.append(newRow);
     const tooltip = document.createElement("span");
     tooltip.className = "tooltip";
     tooltip.innerText = description_input.value;

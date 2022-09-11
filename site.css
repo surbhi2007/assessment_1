@@ -20,16 +20,18 @@ td {
 #display-image {
   background-size: auto;
   background-repeat: no-repeat;
-  width: 850px;
+  width: fit-content;
   height: 600px;
   position: relative;
+  display: none;
 }
 
 img {
-  height: 95%;
-  width: 70%;
+  height: 100%;
+  width: 100%;
   object-fit: contain;
   z-index: -1;
+  cursor: crosshair;
 }
 
 .imageDetails {
@@ -41,9 +43,9 @@ img {
 .redMark {
   height: 5px;
   width: 5px;
-  background-color: #892121;
+  background-color: #de2626;
   border-radius: 50%;
-  position: fixed;
+  position: absolute;
 }
 
 #dialogBox {

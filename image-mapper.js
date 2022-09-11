@@ -10,37 +10,38 @@ const closeButton = document.querySelector("#close");
 const coordinatesTable = document.querySelector("#coordinatesTable");
 const coordinatesTableBody = document.querySelector("#coordinatesTable tbody");
 const description_input = document.querySelector("#description");
-
-body.addEventListener("click", function (event) {
-  console.log(event, "...event..");
-});
+const image = document.querySelector("img");
+const redDots = document.querySelector("#red-dots");
 
 image_input.addEventListener("change", function () {
   const reader = new FileReader();
+  if (image.src) {
+    redDots.remove();
+    coordinatesTable.remove();
+  }
   reader.addEventListener("load", () => {
-    const image = new Image();
+    image_area.style.display = "block";
     image.src = reader.result;
     image.onload = function () {
-      imageDimensions.innerText = `Dimensions: ${image.width} x ${image.height}`;
+      imageDimensions.innerText = `Dimensions: ${image.naturalWidth} x ${image.naturalHeight}`;
     };
-    image_area.append(image);
   });
-  mimeType.innerText = `Mime Type: ${this.files[0].type}`;
-  imageName.innerText = `Image Name: ${this.files[0].name}`;
+  mimeType.innerText = `Mime Type: ${this.files[0]?.type}`;
+  imageName.innerText = `Image Name: ${this.files[0]?.name}`;
   reader.readAsDataURL(this.files[0]);
 });
-
 let redMarker = "";
 let xPosition;
 let yPosition;
+
 image_area.addEventListener("click", function (imageAreaEvent) {
   if (
     imageAreaEvent.target.tagName === "IMG" &&
     (dialogBox.style.display === "none" || !dialogBox.style.display)
   ) {
     redMarker = document.createElement("div");
-    xPosition = imageAreaEvent.clientX - redMarker.clientWidth;
-    yPosition = imageAreaEvent.clientY - redMarker.clientHeight;
+    xPosition = imageAreaEvent.clientX;
+    yPosition = imageAreaEvent.clientY;
     redMarker.className = "redMark";
     redMarker.style.left = `${xPosition}px`;
     redMarker.style.top = `${yPosition}px`;
@@ -72,7 +73,7 @@ saveButton.addEventListener("click", (saveEvent) => {
     tooltip.className = "tooltip";
     tooltip.innerText = description_input.value;
     redMarker.append(tooltip);
-    image_area.appendChild(redMarker);
+    redDots.append(redMarker);
     description_input.value = "";
   }
   dialogBox.style.display = "none";

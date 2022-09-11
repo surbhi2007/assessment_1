@@ -1,3 +1,4 @@
+#red-dots,
 body {
   display: flex;
   flex-direction: column;
@@ -6,31 +7,38 @@ body {
 
 #coordinatesTable {
   display: none;
-  border: 1px solid black;
   width: fit-content;
-  background-color: #f0f0f0;
-}
-table,
-th,
-td {
-  border: 1px solid black;
+  max-height: 250px;
+  overflow:auto;
+  margin: 0 auto;
   border-collapse: collapse;
 }
 
-#display-image {
+td, th {
+  padding: 0.5rem;
+  border: 1px solid black;
+}
+
+tr {
+  background-color: #f0f0f0;
+}
+
+#display-content {
+  flex-direction: row;
+  margin: 10px;
   background-size: auto;
   background-repeat: no-repeat;
   width: fit-content;
-  height: 600px;
+  height: auto;
   position: relative;
+  bottom: 2%;
   display: none;
 }
 
 img {
-  height: 100%;
-  width: 100%;
+  width: fit-content;
+  height: 600px;
   object-fit: contain;
-  z-index: -1;
   cursor: crosshair;
 }
 

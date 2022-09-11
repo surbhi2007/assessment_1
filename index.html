@@ -15,8 +15,18 @@
         <div id="imageDimensions"></div>
         <div id="mimeType"></div>
     </div>
-    <div id="display-image">
+    <div id="display-content">
         <img />
+        <table id="coordinatesTable">
+            <thead>
+                <tr>
+                    <th>X Pos</th>
+                    <th>Y Pos</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
     </div>
     <form id="dialogBox" name="dialogBox">
         <label for="description">Description</label>
@@ -26,16 +36,6 @@
             <button id="close"> &#10007; Close</button>
         </div>
     </form>
-    <table id="coordinatesTable">
-        <thead>
-            <tr>
-                <th>X Pos</th>
-                <th>Y Pos</th>
-                <th>Description</th>
-            </tr>
-        </thead>
-        <tbody></tbody>
-    </table>
     <div id="red-dots"></div>
     <script src="image-mapper.js"></script>
 </body>

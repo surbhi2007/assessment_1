@@ -1,6 +1,6 @@
 const body = document.querySelector("body");
 const image_input = document.querySelector("#image-input");
-const image_area = document.querySelector("#display-image");
+const image_area = document.querySelector("#display-content");
 const mimeType = document.querySelector("#mimeType");
 const imageName = document.querySelector("#imageName");
 const imageDimensions = document.querySelector("#imageDimensions");
@@ -16,11 +16,12 @@ const redDots = document.querySelector("#red-dots");
 image_input.addEventListener("change", function () {
   const reader = new FileReader();
   if (image.src) {
-    redDots.remove();
-    coordinatesTable.remove();
+    redDots.innerHTML = "";
+    coordinatesTableBody.innerHTML = "";
+    coordinatesTable.style.display = "none";
   }
   reader.addEventListener("load", () => {
-    image_area.style.display = "block";
+    image_area.style.display = "flex";
     image.src = reader.result;
     image.onload = function () {
       imageDimensions.innerText = `Dimensions: ${image.naturalWidth} x ${image.naturalHeight}`;
@@ -35,6 +36,7 @@ let xPosition;
 let yPosition;
 
 image_area.addEventListener("click", function (imageAreaEvent) {
+  console.log("....im..", imageAreaEvent.target.tagName, imageAreaEvent);
   if (
     imageAreaEvent.target.tagName === "IMG" &&
     (dialogBox.style.display === "none" || !dialogBox.style.display)
